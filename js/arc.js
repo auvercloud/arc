@@ -49,9 +49,9 @@ var arc = {
 	// MUST BE SET WITH A VALID KEY FOR ANY API CALL
 	APP_KEY : "",
 	// API SERVER URL: SHOULD NOT BE MODIFIED
-	API_URL : "https://api.basics.io",
+	API_URL : "https://api.auvercloud.com",
 	// CAPCHA PICTURE FOLDER URL: SHOULD NOT BE MODIFIED
-	CAPCHA_PATH : "https://api.basics.io/capcha/",
+	CAPCHA_PATH : "https://api.auvercloud.com/capcha/",
 	// AUVERCLOUD CLIENT CSS AND CRYPTO LIB
 	CLIENT_CSS : "https://www.auvercloud.com/run/css/arc.css",
 	CLIENT_CRYPTO : "https://www.auvercloud.com/run/lib/crypto.min.js",
@@ -267,58 +267,26 @@ arc.getTime = function(options) {
 };
 
 /* =============================================================================================
- * UTILITY: paramGet
- * Purpose: Return sanitized URL predefined parameters if any
- * Use case(s): Language adaptation and dynamic action
- * Parameters:  pid = Optional. Requested parameter ID if any
- * Return : (1) if no parameter => associative array of parameters
- * 				.lang = en/fr
- * 				.user = email address
- * 			(2) if parameter => Parameter value if found. Otherwise false.
+ * UTILITY: urlParameters
+ * Purpose: Return an associative array of the current url parameters
+ * Parameter(s):  N/A
+ * Return : Associative array of name/value
  * --------------------------------------------------------------------------------------------- */
-arc.paramGet = function(pid) {
+arc.urlParameters = function() {
 	var params = window.location.search.substr(1).split("&");
-	var resAll = {};
-	var resPid = false;
-	resAll.lang = false;
-	resAll.user = false;
+	var res = {};
+
+	// Exit if no parameter
+	if (!params[0])
+		return res;
+
 	for (var i = 0; i < params.length; i++) {
 		var param = params[i].split("=");
-
-		switch(param[0]) {
-		case "lang":
-			// Special case for cms.auvercloud
-			if (arc.APP_LANGUAGE_SUPPORTED.indexOf(param[1]) != -1) {
-				if (pid == param[0])
-					resPid = param[1];
-				else
-					resAll.lang = param[1];
-			}
-			break;
-		case "user":
-			// Special case for cms.auvercloud
-			if (arc.REX.mail.test(param[1]))
-				if (pid == param[0])
-					resPid = param[1];
-				else
-					resAll.user = param[1];
-			break;
-		default:
-			// Nominal case
-			if (pid == param[0])
-				resPid = param[1];
-			else
-				resAll.user = param[1];
-			break;
-		}
+		res[param[0]] = param[1];
 	}
 
-	// Return a parameter value...
-	if (pid)
-		return resPid;
-	// ... or an associative array
-	else
-		return resAll;
+	// Return result
+	return res;
 };
 
 /* =============================================================================================
@@ -631,7 +599,8 @@ arc.api = function(apiName, params, success, error, method, up, down) {
 	params.api = apiName;
 
 	// Required params from global vars
-	params.key = arc.APP_KEY;
+	if (!params.key)
+		params.key = arc.APP_KEY;
 
 	// Required params for usage stats
 	params.deviceOS = arc.deviceOS();
@@ -754,6 +723,7 @@ arc.API_WAIT_CSS = {
 arc.waitStart = function() {
 	// Apply function if flag set
 	if (arc.API_WAIT) {
+		var w = $(window).width();
 		// Insert element if not yet there, then apply CSS and resize
 		if ($("#" + arc.API_WAIT_ID).length == 0) {
 			// Append div to body
@@ -1406,19 +1376,18 @@ arc.run = function(key, options) {
 	var settings = $.extend({
 		// Debug mode
 		debug : false,
+		// API wait UI
+		api_wait : false,
+		// Supported languages
+		languages : ["en"],
 		// Callback function
 		callback : false
 	}, options);
 
-	// Apply debug mode
+	// Apply options
 	arc.DEBUG = settings.debug;
-
-	// Exit if already loaded
-	if ($("body").data(arc.DOM_PREFIX + "Loaded"))
-		return;
-
-	// Set flag
-	$("body").data(arc.DOM_PREFIX + "Loaded", true);
+	arc.API_WAIT = settings.api_wait;
+	arc.APP_LANGUAGE_SUPPORTED = settings.languages;
 
 	// Check key API
 	if (!key) {
@@ -1427,6 +1396,17 @@ arc.run = function(key, options) {
 		return;
 	} else
 		arc.APP_KEY = key;
+
+	// Exit if already loaded
+	if ($("body").data(arc.DOM_PREFIX + "Loaded")) {
+		// Callback
+		if ( typeof settings.callback == "function")
+			settings.callback();
+		return;
+	}
+
+	// Set flag
+	$("body").data(arc.DOM_PREFIX + "Loaded", true);
 
 	// Define jQuery extensions
 	arc.jQuery();
