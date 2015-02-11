@@ -21,4 +21,6 @@ Components of AuverCloud Runtime Client:
 
 ##php##
 - _arc.php_: PHP client for the AuverCloud content server. It enables the integration of AuverCloud content in PHP pages as well as simple blogs and RSS streams.
+
+The API test page is also a good way to understand how the API calls are done using the JavaScript client, especially the file _test.js_.
  

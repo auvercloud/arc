@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- =============== START: STANDARD AUVERCLOUD HEAD =============== -->
+		<!-- CHARSET -->
+		<meta charset="utf-8" />
+
+		<!-- FAVICON -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../all/ico/auvercloud.ico" />
+
+		<!-- FB: Open Graph url, title and description are added by gui.js  -->
+		<meta property="og:image" content="https://www.auvercloud.com/all/img/auvercloud-bg-200x200.png"/>
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="200" />
+		<meta property="og:image:height" content="200" />
+
+		<!-- MOBILE -->
+		<meta name="viewport" content="width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+		<!-- AUVERCLOUD MINIMIZED CLIENT: jQuery 2.1.3 + Crypto.js + AuverCloud client  -->
+		<script src="../../run/min/arc.min.js"></script>
+
+		<!-- JQUERY PLUGINS-->
+		<link type="text/css" rel="stylesheet" href= "../../all/lib/jQuery/Tooltipster/tooltipster.css" />
+		<script src="../../all/lib/jQuery/Tooltipster/jquery.tooltipster.min.js"></script>
+		<script src="../../all/lib/jQuery/Autosize/jquery.autosize.min.js"></script>
+
+		<!-- CSS + JS UI (AFTER RUNTIME): Auvercloud template + specific www -->
+		<link type="text/css" rel="stylesheet" href= "../../all/css/gui.css" />
+		<link type="text/css" rel="stylesheet" href= "../../all/css/www.css" />
+		<script src="../../all/js/gui.js"></script>
+		<!-- =============== STOP: STANDARD AUVERCLOUD HEAD =============== -->
+
+		<!-- TITLE, DESCRIPTION, KEYWORDS -->
+		<title>AuverCloud API test page</title>
+		<meta name="description" content="This page aims at testing and playing with the AuverCloud API server with the application keys provided by the AuverCloud Studio.">
+
+		<!-- LIB: jQuery, Prettify -->
+		<script type="text/javascript" src="../../all/lib/Prettify/prettify.js"></script>
+
+		<!-- Test page -->
+		<link type="text/css" rel="stylesheet" href= "test.css" />
+		<script type="text/javascript" src="test.js"></script>
+	</head>
+	<body id="main">
+		<header>
+			<nav>
+				<a id="header-logo" href="index.html"><img src="../../all/img/auvercloud-512x400.png" alt="Logo AuverCloud"></a>
+				<div id="head-menu"></div>
+				<a id="header-studio" class="uico tooltip" title="STUDIO" href="https://www.auvercloud.com/studio">&#xe23a;</a>
+			</nav>
+		</header>
+		<section>
+			<div class="container">
+				<div class="full" id="title-section">
+					<h1>auvercloud api server test page </h1>
+					<p>
+						If it is not yet defined in the field below, you must enter a valid application key that you can get from the <a href="https://www.auvercloud.com/studio/">AuverCloud Studio</a> in order to run any test available in this page.
+					</p>
+					<input id="app-key" type="text" placeholder="Enter a valid application key here to test the API">
+					<p><span class="uico green">&#xe24c;</span> The icon <span class="uico blue-dark">&#xe072;</span>, that you can find in each API title, is a link to the appropriate section of the API reference guide.</p>
+				</div>
+			</div>
+		</section>
+		<section class="section-content">
+			<div class="container">
+				<!-------------------------- MENU -------------------------- -->
+				<div class="quarter1" id="test-menu">
+					<ul>
+						<li>
+							<span>Utility API</span>
+							<ul>
+								<li>
+									utility_capcha_new
+								</li>
+								<li>
+									utility_capcha_check
+								</li>
+								<li>
+									utility_contact
+								</li>
+								<li >
+									utility_ip
+								</li>
+								<li >
+									utility_ip2country
+								</li>
+								<li >
+									utility_page_log
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>User API</span>
+							<ul>
+								<li>
+									user_subscriber_new
+								</li>
+								<li>
+									user_subscriber_confirm
+								</li>
+								<li>
+									user_password_new
+								</li>
+								<li>
+									user_password_confirm
+								</li>
+								<li>
+									user_session_start
+								</li>
+								<li>
+									user_subscriber_bye
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>User API <span>[session required]</span></span>
+							<ul>
+								<li>
+									user_session_check
+								</li>
+								<li>
+									user_session_stop
+								</li>
+								<li>
+									user_data_get
+								</li>
+								<li>
+									user_data_set
+								</li>
+								<li>
+									user_password_update
+								</li>
+								<li>
+									user_mobile_check
+								</li>
+								<li>
+									user_mobile_match
+								</li>
+								<li>
+									user_subscriber_cancel
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>Content API</span>
+							<ul>
+								<li>
+									content_pub
+								</li>
+								<li>
+									content_log
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>Data API <span>[session required]</span></span>
+							<ul>
+								<li>
+									data_up
+								</li>
+								<li>
+									data_down
+								</li>
+								<li>
+									data_search
+								</li>
+								<li>
+									data_list
+								</li>
+								<li>
+									data_delete
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>Control API <span>[session required]</span></span>
+							<ul>
+								<li>
+									monitor_stat
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-------------------------- FORM -------------------------- -->
+				<div class="quarter3">
+					<h2>utility api</h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>utility_capcha_new <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_capcha_new.html">&#xe072;</a>, utility_capcha_check <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_capcha_check.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Captcha picture:</td>
+								<td><img id="capcha"></td>
+							</tr>
+							<tr>
+								<td>Captcha input:</td>
+								<td>
+								<input type="text" style="width:50%;" id="capcha-input">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha refresh:</td>
+								<td>
+								<input type="button" value="REFRESH" id="capcha-refresh">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha check:</td>
+								<td>
+								<input type="button" value="CHECK" id="capcha-check">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="capcha-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>utility_contact <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_contact.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Business user's email:</td>
+								<td>
+								<input type="text" style="width:80%;" id="email-business">
+								</td>
+							</tr>
+							<tr>
+								<td>Contact subject:</td>
+								<td>
+								<input type="text" style="width:80%;" id="contact-subject">
+								</td>
+							</tr>
+							<tr>
+								<td>Contact body:</td>
+								<td>
+								<input type="text" style="width:80%;" id="contact-body">
+								</td>
+							</tr>
+							<tr>
+								<td>Visitor's email (optional)</td>
+								<td>
+								<input type="text" style="width:80%;" id="email-visitor">
+								</td>
+							</tr>
+							<tr>
+								<td>Acknowledgement subject (optional)</td>
+								<td>
+								<input type="text" style="width:80%;" id="ack-subject">
+								</td>
+							</tr>
+							<tr>
+								<td>Acknowledgement body (optional)</td>
+								<td>
+								<input type="text" style="width:80%;" id="ack-body">
+								</td>
+							</tr>
+							<tr>
+								<td>Contact message send:</td>
+								<td>
+								<input type="button" value="SEND" id="contact-send">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="contact-response"></td>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>utility_ip <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_ip.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Get current IP address:</td>
+								<td>
+								<input type="button" value="GET IP" id="utility-ip">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="utility-ip-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>utility_ip2country <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_ip2country.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>IP address:</td>
+								<td>
+								<input type="text" style="width:50%;" id="utility-ip-value">
+								</td>
+							</tr>
+							<tr>
+								<td>Get country from IP address:</td>
+								<td>
+								<input type="button" value="GET COUNTRY" id="utility-country">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="utility-country-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">country</span>:</td>
+								<td class="value" id="utility-country-value"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>utility_page_log <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_utility_page_log.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Log current page for stats:</td>
+								<td>
+								<input type="button" value="LOG THIS PAGE" id="utility-log-page">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="utility-log-response"></td>
+							</tr>
+						</table>
+					</div>
+					<h2> user api</h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>user_subscriber_new <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_subscriber_new.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Subscriber email address:</td>
+								<td>
+								<input type="text" style="width:100%;" id="subscriber-email">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha picture:</td>
+								<td><img id="subscriber-capcha"></td>
+							</tr>
+							<tr>
+								<td>Captcha input:</td>
+								<td>
+								<input type="text" style="width:50%;" id="subscriber-capcha-input">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha refresh:</td>
+								<td>
+								<input type="button" value="REFRESH" id="subscriber-capcha-refresh">
+								</td>
+							</tr>
+							<tr>
+								<td>Start subscription:</td>
+								<td>
+								<input type="button" value="SUBSCRIBE" id="subscriber-new">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="subscriber-response"></td>
+							</tr>
+						</table>
+						<h4>optional parameters and default values</h4>
+						<p>
+							If the API call is OK, a temporary account is created and a customizable email including a confirmation link is sent to the email address.
+						</p>
+						<p>
+							The <span class="code">callback</span> parameter contains the URL targeted by the confirmation link. By default, this parameter is set to API front end URL. It is recommended to provide your own URL with specific UI even if finally the confirmation parameters must be sent to API server.
+						</p>
+
+						<p>
+							If the account is confirmed by clicking the confirmation link included in the email, a second email containing a random-built password is then sent. If the account is not confirmed within a day, the temporary account is deleted.
+						</p>
+						<p>
+							See below the confirmation and conclusion default texts. To customize them, provide your own content using the optional parameters. See this page code source for a sample of API call and take a look at <a href="http://social.swiftpage.com/2013/04/23/make-it-work-best-practices-for-creating-custom-html-email-templates" target="_blank">these best practices</a> to design your own templates.
+						</p>
+						<p>
+							In the following examples of message,
+							<ul>
+								<li>
+									<span class="code">%%business%%</span> will be replaced by your business full name as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%contact%%</span> will be replaced by your contact email address as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%link%%</span> will be replaced by a confirmation link built with <span class="code">callback</span>,
+								</li>
+								<li>
+									<span class="code">%%password%%</span> will be replaced by a password generated by the server.
+								</li>
+							</ul>
+						</p>
+						<table class="api-form options">
+							<tr>
+								<td><span class='code'>callback</span>:</td>
+								<td>
+								<input type="text" style="width:50%;" id="subscriber-callback" value="https://api.auvercloud.com/">
+								</td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="confirm-subject">
+Please confirm, your subscription to %%business%%</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_body</span>:</td>
+								<td>								<textarea rows="5" class="message" id="confirm-body">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>
+To confirm your subscription to %%business%%,
+please click the following <a href='%%link%%'>link</a>.</div></textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="conclude-subject">
+Your subscription to %%business%% is confirmed</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_body</span>:</td>
+								<td>								<textarea rows="5" class="message" id="conclude-body">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>	
+Thank you for confirming your subscription to %%business%%.
+Your password is %%password%%.</div></textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>user_data</span>:</td>
+								<td>								<textarea rows="1" class="message" id="user-data">
+Any data in a string up to 32 kilobytes.</textarea></td>
+							</tr>
+						</table>
+						<br>
+
+						<h3><span class="uico">&#xe3d1; </span>user_subscriber_confirm <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_subscriber_confirm.html">&#xe072;</a></h3>
+						<p>
+							The test of this API is done by testing the API <span class="code ">user_subscriber_new</span> and then by clicking the confirmation link included in the email sent to the subscriber.
+						</p>
+
+						<h3><span class="uico">&#xe3d1; </span>user_password_new <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_password_new.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td>Subscriber email address:</td>
+								<td>
+								<input type="text" style="width:100%;" id="password-email">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha picture:</td>
+								<td><img id="password-capcha"></td>
+							</tr>
+							<tr>
+								<td>Captcha input:</td>
+								<td>
+								<input type="text" style="width:50%;" id="password-capcha-input">
+								</td>
+							</tr>
+							<tr>
+								<td>Captcha refresh:</td>
+								<td>
+								<input type="button" value="REFRESH" id="password-capcha-refresh">
+								</td>
+							</tr>
+							<tr>
+								<td>Start password reset:</td>
+								<td>
+								<input type="button" value="RESET" id="password-new">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="password-response"></td>
+							</tr>
+						</table>
+						<h4>optional parameters and default values</h4>
+						<p>
+							If the API call is OK, a temporary token is created and a customizable email including a confirmation link is sent to the email address.
+						</p>
+						<p>
+							The <span class="code">callback</span> parameter contains the URL targeted by the confirmation link. By default, this parameter is set to API front end URL. It is recommended to provide your own URL with specific UI even if finally the confirmation parameters must be sent to API server.
+						</p>
+
+						<p>
+							If the password reset is confirmed by clicking the confirmation link included in the email, a second email containing a random-built password is then sent.
+						</p>
+						<p>
+							See below the confirmation and conclusion default texts. To customize them, provide your own content using the optional parameters. See this page code source for a sample of API call and take a look at <a href="http://social.swiftpage.com/2013/04/23/make-it-work-best-practices-for-creating-custom-html-email-templates" target="_blank">these best practices</a> to design your own templates.
+						</p>
+						<p>
+							In the following examples of message,
+							<ul>
+								<li>
+									<span class="code">%%business%%</span> will be replaced by your business full name as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%contact%%</span> will be replaced by your contact email address as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%link%%</span> will be replaced by a confirmation link built with <span class="code">callback</span>,
+								</li>
+								<li>
+									<span class="code">%%password%%</span> will be replaced by a password generated by the server.
+								</li>
+							</ul>
+						</p>
+						<table class="api-form options">
+							<tr>
+								<td><span class='code'>callback</span>:</td>
+								<td>
+								<input type="text" style="width:50%;" id="password-callback" value="https://api.auvercloud.com/">
+								</td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="confirm-subject-pwd">
+Please confirm your password reset for %%business%%</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_body</span>:</td>
+								<td>								<textarea rows="5" class="message" id="confirm-body-pwd">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>
+To confirm the password reset for %%business%%,
+please click the following <a href='%%link%%'>link</a>.</div></textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="conclude-subject-pwd">
+Your password reset for %%business%% is performed</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_body</span>:</td>
+								<td>								<textarea rows="5" class="message" id="conclude-body-pwd">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>	
+Your NEW password for %%business%% is %%password%%.</div></textarea></td>
+							</tr>
+						</table>
+
+						<h3><span class="uico">&#xe3d1; </span>user_password_confirm <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_password_confirm.html">&#xe072;</a></h3>
+						<p>
+							The test of this API is done by testing the API <span class="code ">user_password_new</span> and then by clicking the confirmation link included in the email sent to the subscriber.
+						</p>
+						<h3><span class="uico">&#xe3d1; </span>user_session_start <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_session_start.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>User email:</td>
+								<td>
+								<input type="text" style="width:80%;" id="subscriber-usr">
+								</td>
+							</tr>
+							<tr>
+								<td>User password:</td>
+								<td>
+								<input type="text" style="width:80%;" id="subscriber-pwd">
+								</td>
+							</tr>
+							<tr>
+								<td>Device identifier (MD5):</td>
+								<td>
+								<input type="text" style="width:80%;" id="subscriber-did">
+								</td>
+
+							</tr>
+							<tr>
+								<td>Start session:</td>
+								<td>
+								<input type="button" value="LOGON" id="subscriber-logon">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="subscriber-logon-response"></td>
+							</tr>
+						</table>
+						<h4>optional parameters and default values</h4>
+						<table class="api-form options">
+							<tr>
+								<td>Session length:</td>
+								<td>
+								<select id="subscriber-ttl">
+									<option value="a">Browser session</option>
+									<option value="b">10 mn</option>
+									<option value="c">1 hour</option>
+									<option value="d">1 day</option>
+									<option value="e">1 week</option>
+									<option value="f">1 month</option>
+									<option value="g" selected>Forever</option>
+								</select></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_subscriber_bye <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_subscriber_bye.html">&#xe072;</a></h3>
+						<p>
+							The test of this API is done by testing the API <span class="code ">user_subscriber_cancel</span> and then by clicking the confirmation link included in the email sent to the subscriber.
+						</p>
+					</div>
+					<h2> user api - session required </h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>user_session_check <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_session_check.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>Check if local and server sessions data match:</td>
+								<td>
+								<input type="button" value="CHECK" id="subscriber-session-check">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="subscriber-session-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_session_stop <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_session_stop.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>Stop all current user sessions:</td>
+								<td>
+								<input type="button" value="STOP" id="subscriber-session-stop">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="subscriber-close-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_data_get <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_data_get.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>Get user profile data: </td>
+								<td>
+								<input type="button" value="GET USER DATA" id="user-data-get">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-data-get-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">user_data</span>:</td>
+								<td class="value" id="user-data-get-value"></td>
+							</tr>
+						</table>
+
+						<h3><span class="uico">&#xe3d1; </span>user_data_set <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_data_set.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class='code'>user_data</span>:</td>
+								<td>								<textarea rows="1" class="message" id="user-data-set-value">
+Any data in a string up to 32 kilobytes.</textarea></td>
+							</tr>
+							<tr>
+								<td>Set user profile data: </td>
+								<td>
+								<input type="button" value="SET USER DATA" id="user-data-set">
+								</td>
+							</tr>
+
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-data-set-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_password_update <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_password_update.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>New password value:</td>
+								<td>
+								<input type="text" style="width:80%;" id="user-password-value">
+								<br>
+								<div class="comment">
+									4-16 alphanum and some special characters. See doc.
+								</div></td>
+							</tr>
+							<tr>
+								<td>Update password:<td>
+								<input type="button" value="UPDATE" id="user-password-update">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-password-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_mobile_check <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_mobile_check.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class='code'>tel</span> (digits only):</td>
+								<td>
+								<input type="text" style="width:50%;" id="user-mobile-tel">
+								<br>
+								<div class="comment">
+									International code e.g. 33789123456 or 19283746
+								</div></td>
+							</tr>
+							<tr>
+								<td><span class='code'>msg</span></td>
+								<td>
+								<input type="text" style="width:90%;" id="user-mobile-msg">
+								<br>
+								<div class="comment">
+									Optional.
+								</div></td>
+							</tr>
+							<tr>
+								<td>Send SMS:<td>
+								<input type="button" value="SEND" id="user-mobile-check">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-mobile-response"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_mobile_match <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_mobile_match.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class='code'>code</span>:</td>
+								<td>
+								<input type="text" style="width:50%;" id="user-mobile-code">
+								</td>
+							</tr>
+							<tr>
+								<td>Check code:<td>
+								<input type="button" value="CHECK" id="user-mobile-match">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-mobile-match-response"></td>
+							</tr>
+							<tr>
+								<td>Validated phone number:</td>
+								<td class="value" id="user-mobile-match-value"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>user_subscriber_cancel <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_user_subscriber_cancel.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td>Cancel user account:</td><td>
+								<input type="button" value="UNSUBSCRIBE" id="user-subscriber-cancel">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="user-subscriber-cancel-response"></td>
+							</tr>
+						</table>
+						<h4>optional parameters and default values</h4>
+						<p>
+							If the API call is OK, a temporary token is created and a customizable email including a confirmation link is sent to the email address.
+						</p>
+						<p>
+							The <span class="code">callback</span> parameter contains the URL targeted by the confirmation link. By default, this parameter is set to API front end URL. It is recommended to provide your own URL with specific UI even if finally the confirmation parameters must be sent to API server.
+						</p>
+
+						<p>
+							If the account cancellation is confirmed by clicking the confirmation link included in the email, a second 'bye-bye' email is then sent.
+						</p>
+						<p>
+							See below the confirmation and conclusion default texts. To customize them, provide your own content using the optional parameters. See this page code source for a sample of API call and take a look at <a href="http://social.swiftpage.com/2013/04/23/make-it-work-best-practices-for-creating-custom-html-email-templates" target="_blank">these best practices</a> to design your own templates.
+						</p>
+						<p>
+							In the following examples of message,
+							<ul>
+								<li>
+									<span class="code">%%business%%</span> will be replaced by your business full name as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%contact%%</span> will be replaced by your contact email address as defined in your account,
+								</li>
+								<li>
+									<span class="code">%%link%%</span> will be replaced by a confirmation link built with <span class="code">callback</span>,
+								</li>
+							</ul>
+						</p>
+						<table class="api-form options">
+							<tr>
+								<td><span class='code'>callback</span>:</td>
+								<td>
+								<input type="text" style="width:50%;" id="cancel-callback" value="https://api.auvercloud.com/">
+								</td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="confirm-subject-cancel">Please confirm your unsubscribe to %%business%%</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>confirm_body</span>:</td>
+								<td>								<textarea rows="6" class="message" id="confirm-body-cancel">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>
+To confirm the cancellation of your %%business%% account, please click the following <a href='%%link%%'>link</a>. This will delete permanently all your data.</div></textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_subject</span>:</td>
+								<td>								<textarea rows="1" class="message" id="conclude-subject-cancel">
+You are unsubscribed from %%business%%</textarea></td>
+							</tr>
+							<tr>
+								<td><span class='code'>conclude_body</span>:</td>
+								<td>								<textarea rows="5" class="message" id="conclude-body-cancel">
+<div style='font-family:Arial;font-size:14px;'>
+This email is sent on behalf of %%contact%%.<br>	
+Sorry that you left us. Bye.</div></textarea></td>
+							</tr>
+						</table>
+					</div>
+					<h2> content api </h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>content_pub <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_content_pub.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class='code'>cname</span>:</td>
+								<td>
+								<input type="text" id="content-pub-cname" style="width:401px;" placeholder="Content name as defined in the AuverCloud Studio">
+								</td>
+							</tr>
+							<tr>
+								<td><span class="code">ctype</span>:</td>
+								<td>
+								<select id="content-pub-ctype">
+									<option value="text" selected>text</option>
+									<option value="picture">picture</option>
+									<option value="menu">menu</option>
+									<option value="frame">frame</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td>Get content:</td><td>
+								<input type="button" value="GET" id="content-pub">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="content-pub-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">title</span>:</td>
+								<td class="value" id="content-pub-response-title"></td>
+							</tr>
+							<tr>
+								<td><span class="code">color</span>:</td>
+								<td class="value" id="content-pub-response-color"></td>
+							</tr>
+							<tr>
+								<td><span class="code">content</span>:</td>
+								<td class="value" id="content-pub-response-body"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>content_log <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_content_log.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class='code'>cname</span>:</td>
+								<td>
+								<input type="text" id="content-log-cname" style="width:401px;" placeholder="Content name as defined in the AuverCloud Studio">
+								</td>
+							</tr>
+							<tr>
+								<td>Get log:</td><td>
+								<input type="button" value="GET" id="content-log">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="content-log-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">log</span>:</td>
+								<td class="value" id="content-log-response-log"></td>
+							</tr>
+						</table>
+					</div>
+					<h2> data api - session required </h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>data_up <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_data_up.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class="code">id</span>:</td><td>
+								<input type="text" id="data-up-id" style="width:401px;" placeholder="Leave empty for new data, or existing ID">
+								</td>
+							</tr>
+							<tr>
+								<td><span class='code'>searchable</span>:</td>
+								<td>
+								<input type="text" id="data-up-searchable" style="width:401px;" placeholder="Searchable text up to 2^15 characters">
+								</td>
+							</tr>
+							<tr>
+								<td><span class="code">share</span>:</td>
+								<td>
+								<select id="data-up-share" style="width:100%">
+									<option value="0" selected>0: Owner [Down/Up/Del] (default)</option>
+									<option value="1">1: Owner [Down/Up/Del] + Anyone with same business ID [Down]</option>
+									<option value="2">2: Owner [Down/Up/Del] + Anyone with same business ID [Down/Up]</option>
+									<option value="3">3: Owner [Down/Up/Del] + Anyone with valid AuverCloud ID [Down]</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td><span class='code'>data</span>:</td>
+								<td>								<textarea rows="2" class="message" id="data-up-data">Any data up to 2^24 characters.
+SEARCH WILL NOT APPLY TO THIS FIELD.</textarea></td>
+							</tr>
+							<tr>
+								<td>Upload data:</td><td>
+								<input type="button" value="UPLOAD" id="data-up">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Progress:</td>
+								<td id="data-up-progress" class="progress"><span>0%</span><span>100%</span>
+								<div>
+									<div></div>
+								</div></td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="data-up-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">data_id</span>:</td>
+								<td class="value" id="data-up-response-id"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>data_down <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_data_down.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form" id="form-data-down">
+							<tr>
+								<td><span class="code">id</span>:</td><td>
+								<input type="text" id="data-down-id" style="width:401px;">
+								</td>
+							</tr>
+							<tr>
+								<td>Download data:</td><td>
+								<input type="button" value="DOWNLOAD" id="data-down">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Progress:</td>
+								<td id="data-down-progress" class="progress"><span>0%</span><span>100%</span>
+								<div>
+									<div></div>
+								</div></td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="data-down-response"></td>
+							</tr>
+							<tr>
+								<td><span class="code">count_down</span>:</td>
+								<td class="value" id="data-down-response-count-down"></td>
+							</tr>
+							<tr>
+								<td><span class="code">count_up</span>:</td>
+								<td class="value" id="data-down-response-count-up"></td>
+							</tr>
+							<tr>
+								<td><span class="code">created_on</span>:</td>
+								<td class="value" id="data-down-response-created-on"></td>
+							</tr>
+							<tr>
+								<td><span class="code">created_by</span>:</td>
+								<td class="value" id="data-down-response-created-by"></td>
+							</tr>
+							<tr>
+								<td><span class="code">updated_on</span>:</td>
+								<td class="value" id="data-down-response-updated-on"></td>
+							</tr>
+							<tr>
+								<td><span class="code">updated_by</span>:</td>
+								<td class="value" id="data-down-response-updated-by"></td>
+							</tr>
+							<tr>
+								<td><span class="code">share</span>:</td>
+								<td class="value" id="data-down-response-share"></td>
+							</tr>
+							<tr>
+								<td><span class="code">text</span>:</td>
+								<td class="value" id="data-down-response-text"></td>
+							</tr>
+							<tr>
+								<td><span class="code">data</span>:</td>
+								<td class="value" id="data-down-response-data"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>data_search <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_data_search.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form" id="form-data-search">
+							<tr>
+								<td><span class="code">search</span>:</td><td>
+								<input type="text" id="data-search-search" style="width:401px;">
+								</td>
+							</tr>
+							<tr>
+								<td>Search data:</td><td>
+								<input type="button" value="SEARCH" id="data-search">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="data-search-response"></td>
+							</tr>
+							<tr>
+								<td>Own data:</td>
+								<td class="value" id="data-search-response-own"></td>
+							</tr>
+							<tr>
+								<td>Shared business data:</td>
+								<td class="value" id="data-search-response-business"></td>
+							</tr>
+							<tr>
+								<td>Shared world data:</td>
+								<td class="value" id="data-search-response-world"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>data_list <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_data_list.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form" id="form-data-search">
+							<tr>
+								<td><span class="code">pagelen</span>:</td><td>
+								<input type="number" id="data-pagelen" min="1" max="500" style="width:60px">
+								</td>
+							</tr>
+							<tr>
+								<td><span class="code">pagenum</span>:</td><td>
+								<input type="number" id="data-pagenum" min="0" max="1000" style="width:60px">
+								</td>
+							</tr>
+							<tr>
+								<td>Get paginated list:</td><td>
+								<input type="button" value="GET LIST" id="data-list">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="data-list-response"></td>
+							</tr>
+							<tr>
+								<td>Current page list:</td>
+								<td class="value" id="data-list-response-list"></td>
+							</tr>
+							<tr>
+								<td>List total length:</td>
+								<td class="value" id="data-list-response-lines"></td>
+							</tr>
+						</table>
+						<h3><span class="uico">&#xe3d1; </span>data_delete <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_data_delete.html">&#xe072;</a><span class="session">session:<span>unknown</span><div class="led-unknown"></div></span></h3>
+						<table class="api-form" id="form-data-delete">
+							<tr>
+								<td><span class="code">id</span>:</td><td>
+								<input type="text" id="data-delete-id" style="width:401px;">
+								</td>
+							</tr>
+							<tr>
+								<td>Delete data:</td><td>
+								<input type="button" value="DELETE" id="data-delete">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="data-delete-response"></td>
+							</tr>
+						</table>
+					</div>
+					<h2> control api - session required </h2>
+					<div class="item-body">
+						<h3><span class="uico">&#xe3d1; </span>monitor_stat <a class="uico tooltip" target="_blank" href="https://www.auvercloud.com/doc/api_monitor_stat.html">&#xe072;</a></h3>
+						<table class="api-form">
+							<tr>
+								<td><span class="code">secret</span>:</td><td>
+								<input type="text" id="monitor-stat-secret" style="width:80%" placeholder="See Application keys in the uverCloud Studio">
+								</td>
+							</tr>
+							<tr>
+								<td><span class="code">apiName</span>:</td><td>
+								<input type="text" id="monitor-stat-apiName" style="width:50%" placeholder="All API calls if empty ">
+								</td>
+							</tr>
+							<tr>
+								<td>Get Statistics:</td><td>
+								<input type="button" value="GET STATS" id="monitor-stat">
+								</td>
+							</tr>
+							<tr class="response">
+								<td>Response:</td>
+								<td id="monitor-stat-response"></td>
+							</tr>
+							<tr>
+								<td>Stats</td>
+								<td class="value" id="monitor-stat-response-stat"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div>
+				<a class="lang-btn tooltip" id="lang-en"  title="English version"></a>
+				<a class="lang-btn tooltip" id="lang-fr"  title="Version française"></a>
+				<table id="snb">
+					<tr>
+						<td class="verb" id="snbContact"></td><td><a class="uico sn-ico tooltip" id="snbContactEmail">&#xe169;</a><td class="verb" id="snbShare"></td><td><a class="uico sn-ico tooltip" id="snbShareMail">&#xe48f;</a><a target="_blank" class="uico sn-ico tooltip" id="snbShareFb">&#xe499;</a><a target="_blank" class="uico sn-ico tooltip" id="snbShareTw">&#xe49e;</a><a target="_blank" class="uico sn-ico tooltip" id="snbShareGplus">&#xe495;</a><a target="_blank" class="uico sn-ico tooltip" id="snbShareIn">&#xe4cf;</a></td><td class="verb" id="snbFollow"></td><td><a target="_blank" class="uico sn-ico tooltip" id="snbFollowTw">&#xe49d;</a></td><td></td>
+					</tr>
+				</table>
+			</div>
+		</footer>
+	</body>
+</html>

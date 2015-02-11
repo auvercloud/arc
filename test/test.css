@@ -1,0 +1,235 @@
+/* ************************************************************************
+ * AUVERCLOUD API TEST PAGE
+ * ************************************************************************/
+h1 {
+	text-align: center;
+	color: #08A1D9;
+}
+h2 {
+	margin: 60px 0 20px 0;
+	padding: 10px 20px;
+	background-color: #08A1D9;
+	color: #fff;
+}
+h2:first-child {
+	margin: 0 0 20px 0;
+}
+h3 {
+	margin: 10px 0;
+	padding: 10px 0;
+	font-variant: normal;
+	font-family: Monaco;
+	font-size: 16px;
+	color: #444;
+}
+h3 > span:first-child {
+	cursor: pointer;
+}
+h3 > span:first-child:hover {
+	color: #066f96;
+}
+/* ************************************************************************
+ * HEADER + FOOTER
+ * ************************************************************************/
+#head-menu {
+	display: inline-block;
+}
+/* ************************************************************************
+ * TITLE
+ * ************************************************************************/
+#app-key {
+	display: block;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	width: 450px;
+	padding: 5px;
+	font-family: Monaco;
+	font-size: 14px;
+	box-shadow: 1px 1px 2px #ccc;
+	-moz-box-shadow: 1px 1px 2px #ccc;
+	-webkit-box-shadow: 1px 1px 2px #ccc;
+}
+#app-key:focus {
+	border: 1px solid #08A1D9;
+}
+#test-menu {
+	background-color: #F8F8F8;
+	overflow: hidden;
+}
+/* ************************************************************************
+ * SIDE MENU
+ * ************************************************************************/
+#test-menu > ul {
+	margin: 10px 0 10px 30px;
+	width: 100%;
+}
+#test-menu > ul > li > ul {
+	margin: 10px 0 10px 20px;
+}
+#test-menu > ul > li {
+	color: #08A1D9;
+	text-shadow: 0 1px #fff;
+	font-size: 15px;
+}
+#test-menu > ul > li > span > span {
+	font-size: 75%;
+	color: #066F96;
+}
+#test-menu > ul > li > ul > li {
+	color: #000;
+	font-family: Monaco;
+	font-size: 13px;
+	cursor: pointer;
+}
+#test-menu > ul > li > ul > li:hover {
+	color: #066f96;
+}
+/* ************************************************************************
+ * SIDE MENU
+ * ************************************************************************/
+.tooltip {
+	text-decoration: none;
+}
+.code {
+	font-family: Monaco;
+	color: #0a0;
+	font-size: 14px;
+}
+.item-body {
+	margin: 10px 20px;
+}
+.api-form {
+	width: 100%;
+	padding: 10px;
+	border-collapse: separate;
+	border-spacing: 10px;
+	background-color: #eee;
+	box-shadow: 0 0 1px #ccc inset;
+	-moz-box-shadow: 0 0 1px #ccc inset;
+	-webkit-box-shadow: 0 0 1px #ccc inset;
+}
+.api-form  tr > td:nth-child(1) {
+	width: 40%;
+	color: #0a0;
+	font-size: 14px;
+}
+.api-form  tr > td:nth-child(2) {
+	width: 60%;
+}
+.api-form  tr > td:nth-child(1) {
+	text-align: right;
+	color: #444;
+	text-shadow: 1px 1px #fff;
+}
+.api-form input {
+	padding: 2px 5px;
+	font-family: Monaco;
+	font-size: 12px;
+}
+.api-form a {
+	font-family: Courier;
+	font-weight: bold;
+	font-size: 80%;
+	text-decoration: none;
+}
+.api-form a:hover {
+	color: #0AC9FF;
+}
+.options {
+	margin: 20px 10px;
+	background: #FAFAF4;
+}
+.response > td {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	box-shadow: 0 1px #fff inset;
+	-moz-box-shadow: 0 1px #fff inset;
+	-webkit-box-shadow: 0 1px #fff inset;
+}
+.message {
+	display: block;
+	width: 383px;
+	padding: 10px;
+	font-family: Courier;
+	font-size: 75%;
+	color: #888;
+	border: 1px solid #ddd;
+	background: #fff;
+}
+.value {
+	background: #FAFAFA;
+	padding: 0 5px;
+	border: 1px solid #ccc;
+}
+.progress {
+	width: 100%;
+}
+.progress > span {
+	font-size: 75%;
+	display: inline-block;
+	width: 50%;
+}
+.progress > span:nth-child(2) {
+	text-align: right;
+}
+.progress > div {
+	border: 1px solid #ccc;
+	background: #ddd;
+	height: 10px;
+}
+.progress > div > div {
+	height: 100%;
+	width: 0%;
+	background: #08A1D9;
+}
+.led-off {
+	background: #666;
+	background: radial-gradient(40% 35%, #222, #666 60%);
+}
+.led-red {
+	background: #f00;
+	background: radial-gradient(40% 35%, #faa, #f00 60%);
+}
+.led-green {
+	background: #0d0;
+	background: radial-gradient(40% 35%, #ADFF2F, #0d0 60%);
+}
+.led-green-lite {
+	background: #00FF00;
+	background: radial-gradient(40% 35%, #fff, #00FF00 60%);
+}
+.led-blue {
+	background: #00BFFF;
+	background: radial-gradient(40% 35%, #00FFFF, #00BFFF 60%);
+}
+.session {
+	display: block;
+	float: right;
+	font-size: 16px;
+	line-height: 27px;
+	color: #888;
+}
+.session > span {
+	font-family: Arial;
+	font-variant: small-caps;
+	padding: 0 4px;
+	color: #000;
+}
+.session > div {
+	display: inline-block;
+	vertical-align: middle;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+.comment {
+	font-style: italic;
+	font-size: 80%;
+	color: #888;
+}
+/* ************************************************************************
+ * EoF
+ * ************************************************************************/
