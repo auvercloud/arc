@@ -124,7 +124,7 @@ $(function() {
 
 	// Load the right head menu whatever the application key and language
 	arc.api("content_pub", {
-		key : "8065d07da4a77621450aa84fee5656d953e9c89b7ec85",
+		key : "0b1a2s3i4c5s6i7o8p9u0b1l2i3c4k5e6y7890abcdef0",
 		cname : "com_" + lang + "_menu",
 		ctype : "menu"
 	}, function(o) {
