@@ -51,7 +51,7 @@
 class AuverCloud {
 
 	// API server address
-	const API_SERVER = "https://api.basics.io";
+	const API_SERVER = "https://api.auvercloud.com";
 
 	// JS libraries
 	const LIB_JQUERY = "https://www.auvercloud.com/run/lib/jquery-2.1.1.min.js";
@@ -67,23 +67,20 @@ class AuverCloud {
 	/* Function: content
 	 * Purpose: Construct new object
 	 * Parameter(s):- $key = Application Key
-	 * 				- $script = Optional flag to load JS client. See clientJS() below.
+	 * 				- $run_client = Optional. Insert Javascript client launch. Default = true.
+	 * 				- $load_script = Optional flag to load JS client. Default = false.
 	 * ********************************************************************************/
-	function __construct($key, $script = false) {
+	function __construct($key, $run_client = true, $load_script = false) {
 		$this -> app_key = $key;
-		if ($script)
-			$this -> clientJS();
-	}
+		if ($load_script) {
+			echo "<script src='" . self::LIB_JQUERY . "'></script>";
+			echo "<script src='" . self::LIB_CRYPTO . "'></script>";
+			echo "<script src='" . self::LIB_ARC . "'></script>";
+		}
 
-	/* Function: clientJS
-	 * Purpose: Insert AuverCloud JS client and related libs (jQuery, Crypto)
-	 * 			and start AuverCloud JS runtime on Document Ready
-	 * ********************************************************************************/
-	function clientJS() {
-		echo "<script src='" . self::LIB_JQUERY . "'></script>";
-		echo "<script src='" . self::LIB_CRYPTO . "'></script>";
-		echo "<script src='" . self::LIB_ARC . "'></script>";
-		echo "<script>$(function(){arc.run('" . $this -> app_key . "')});</script>";
+		if ($run_client) {
+			echo "<script>$(function(){arc.run('" . $this -> app_key . "')});</script>";
+		}
 	}
 
 	/* Function: my_key
