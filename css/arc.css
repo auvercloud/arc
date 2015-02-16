@@ -46,7 +46,7 @@
 	}
 }
 /* ************************************************************************
- * TEXT CONTENT including compatibility with existing basics.io text
+ * TEXT CONTENT including compatibility with former basics.io text
  * ************************************************************************/
 /* This class is inserted in content to display the 'title' property in text and iframe content. To customize globally or for each content */
 .bio-title, .arc-title {
@@ -172,13 +172,14 @@
 /* Handlers */
 .arc-sc-handler > div {
 	position: absolute;
-	width: 60px;
-	height: 60px;
+	margin:10px;
+	width: 40px;
+	height: 40px;
 	border: none;
 	box-shadow: 0px 0px 1px #fff;
 	-moz-box-shadow: 0px 0px 1px #fff;
 	-webkit-box-shadow: 0px 0px 1px #fff;
-	line-height: 60px;
+	line-height: 40px;
 	font-size: 150%;
 	font-weight: bold;
 	text-align: center;
