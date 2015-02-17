@@ -54,7 +54,7 @@ class AuverCloud {
 	const API_SERVER = "https://api.auvercloud.com";
 
 	// JS libraries
-	const LIB_JQUERY = "https://www.auvercloud.com/run/lib/jquery-2.1.1.min.js";
+	const LIB_JQUERY = "https://www.auvercloud.com/run/lib/jquery-2.1.3.min.js";
 	const LIB_CRYPTO = "https://www.auvercloud.com/run/lib/crypto.min.js";
 	const LIB_ARC = "https://www.auvercloud.com/run/js/arc.js";
 
