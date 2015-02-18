@@ -53,10 +53,8 @@ class AuverCloud {
 	// API server address
 	const API_SERVER = "https://api.auvercloud.com";
 
-	// JS libraries
-	const LIB_JQUERY = "https://www.auvercloud.com/run/lib/jquery-2.1.3.min.js";
-	const LIB_CRYPTO = "https://www.auvercloud.com/run/lib/crypto.min.js";
-	const LIB_ARC = "https://www.auvercloud.com/run/js/arc.js";
+	// JS library
+	const LIB_ARC = "https://www.auvercloud.com/run/min/arc.min.js";
 
 	// HTML error message
 	const ERR_HTML = "<div><h1 style='background:red;color:white'>Error %%code%%: %%msg%%</h1></div>";
@@ -67,18 +65,16 @@ class AuverCloud {
 	/* Function: content
 	 * Purpose: Construct new object
 	 * Parameter(s):- $key = Application Key
-	 * 				- $run_client = Optional. Insert Javascript client launch. Default = true.
-	 * 				- $load_script = Optional flag to load JS client. Default = false.
+	 * 				- $js_load = Optional flag to load JS client. Default = false.
+	 * 				- $js_run = Optional. Insert Javascript client launch. Default = true.
 	 * ********************************************************************************/
-	function __construct($key, $run_client = true, $load_script = false) {
+	function __construct($key, $js_load = false, $js_run = true) {
 		$this -> app_key = $key;
-		if ($load_script) {
-			echo "<script src='" . self::LIB_JQUERY . "'></script>";
-			echo "<script src='" . self::LIB_CRYPTO . "'></script>";
+		if ($js_load) {
 			echo "<script src='" . self::LIB_ARC . "'></script>";
 		}
 
-		if ($run_client) {
+		if ($js_run) {
 			echo "<script>$(function(){arc.run('" . $this -> app_key . "')});</script>";
 		}
 	}

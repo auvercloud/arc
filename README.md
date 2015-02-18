@@ -6,7 +6,6 @@ Components of AuverCloud Runtime Client:
 
 ##css##
 - _arc.css_: Default stylesheet for AuverCloud contents (e.g. text, menu, slideshow)
-- _opensans.css_: Standalone Open Sans font definition. Not required for the client: Only for test.
 - _opensans_ folder: Subset of Open Sans font definition (normal, italic, bold, italic-bold). The original font definition is on [Google font](http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans). Open Sans font is part of this package as it is the only font available in the AuverCloud Studio that is not 100% web proof. 
 
 ##js##

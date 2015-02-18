@@ -1377,7 +1377,7 @@ arc.run = function(key, options) {
 		// Debug mode
 		debug : false,
 		// API wait UI
-		api_wait : false,
+		api_ui : false,
 		// Supported languages
 		languages : ["en"],
 		// Callback function
@@ -1386,7 +1386,7 @@ arc.run = function(key, options) {
 
 	// Apply options
 	arc.DEBUG = settings.debug;
-	arc.API_WAIT = settings.api_wait;
+	arc.API_WAIT = settings.api_ui;
 	arc.APP_LANGUAGE_SUPPORTED = settings.languages;
 
 	// Check key API
