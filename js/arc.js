@@ -866,7 +866,6 @@ arc.jQuery = function() {
 	 * Return : this
 	 * ----------------------------------------------------------------------------------------- */
 	$.fn.arcSlideShow = function(param, title) {
-		console.log("LAUNCH");
 		var wrapper = $(this);
 		// Extend default parameters
 		param = $.extend({}, {
