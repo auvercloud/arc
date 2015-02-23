@@ -866,6 +866,7 @@ arc.jQuery = function() {
 	 * Return : this
 	 * ----------------------------------------------------------------------------------------- */
 	$.fn.arcSlideShow = function(param, title) {
+		console.log("LAUNCH");
 		var wrapper = $(this);
 		// Extend default parameters
 		param = $.extend({}, {
@@ -1026,10 +1027,11 @@ arc.jQuery = function() {
 	 * Return : this
 	 * ----------------------------------------------------------------------------------------- */
 	$.fn.arcSlideReset = function() {
+		var timer = $(this).data("timer");
 		// stop Timer
-		clearTimeout($(this).data("timer"));
+		clearTimeout(timer);
 		// Hide all picture and reset their position
-		$(this).find(".arc-sc-list > div").hide().css("top", 0).css("left", 0);
+		$(this).find(".arc-sc-list > div").hide().css("top", 0).css("left", 0).finish();
 		// Reset loop
 		var settings = $(this).data("settings");
 		settings.loop = 0;
