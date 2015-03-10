@@ -1415,23 +1415,51 @@ arc.run = function(key, options) {
 	// Update body to take care of iOS touch behavior
 	$("body").attr("ontouchstart", "").attr("onmouseover", "");
 
-	// Get content
+	// Get contents and logs
 	var contents = ["text", "picture", "menu", "frame"];
-	var num = {};
+	var num = {
+		text : 0,
+		picture : 0,
+		menu : 0,
+		frame : 0,
+		log : 0
+	};
+	var contentSum = 0;
+	var contentCount = 0;
+	var contentFlag = false;
+	
+	var callback = function() {
+		contentCount = contentCount + 1;
+		var remain = contentSum - contentCount;
+		if (arc.DEBUG)
+			console.log("- arc: Content(s) to load", remain);
+
+		// Apply callback when the last content has been loaded
+		if (contentFlag && remain == 0) {
+			if ( typeof settings.callback == "function")
+				settings.callback();
+		}
+
+	};
 	contents.forEach(function(ctype) {
 		num[ctype] = 0;
 		$("[" + arc.DOM_PREFIX + "-" + ctype + "]").each(function() {
 			num[ctype] = num[ctype] + 1;
-			$(this).arcContent(ctype);
+			$(this).arcContent(ctype, callback);
 		});
 	});
-
-	// Get log
-	num.log = 0;
 	$("[" + arc.DOM_PREFIX + "-log]").each(function() {
-		$(this).arcLog();
+		$(this).arcLog(callback);
 		num.log = num.log + 1;
 	});
+
+	contentFlag = true;
+	contentSum = num.text + num.picture + num.menu + num.frame + num.log;
+
+	// Apply callback when no content
+	if (contentSum == 0 && typeof settings.callback == "function")
+		settings.callback();
+
 	// Add interaction to log when loaded from PHP
 	$("." + arc.DOM_PREFIX + "-log-php").each(function() {
 		// Display the number of log items per month
@@ -1464,10 +1492,6 @@ arc.run = function(key, options) {
 		console.log("- arc:", num.frame, "frame(s)");
 		console.log("- arc:", num.log, "log(s)");
 	}
-
-	// Callback
-	if ( typeof settings.callback == "function")
-		settings.callback();
 };
 
 /* =============================================================================================
