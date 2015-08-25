@@ -1,0 +1,400 @@
+/* =============================================================================================
+ * AUVERCLOUD RUNTIME CLIENT CSS 3.0
+ * ---------------------------------------------------------------------------------------------
+ * Stylesheet for AuverCloud content display.
+ * Can be overwritten for customization
+ * =============================================================================================
+ *
+ * Copyright 2014, 2015 Guillaume DORBES.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =============================================================================================
+ */
+
+/* ************************************************************************
+ * FONT: OPEN SANS REGULAR + ITALIC + BOLD + SEMI-BOLD + EXTRA-BOLD
+ * This font is proposed in the AuverCloud Studio text editor.
+ * It is then required in the runtime client to display correctly any text content edited with AuverCloud.
+ * It can also be obtain on Google Fonts: @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+ * ************************************************************************/
+/* Regular */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-regular-webfont.eot');
+	src: url('opensans/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-regular-webfont.woff2') format('woff2'), url('opensans/opensans-regular-webfont.woff') format('woff'), url('opensans/opensans-regular-webfont.ttf') format('truetype'), url('opensans/opensans-regular-webfont.svg#open_sansregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* Regular + Italic */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-italic-webfont.eot');
+	src: url('opensans/opensans-italic-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-italic-webfont.woff2') format('woff2'), url('opensans/opensans-italic-webfont.woff') format('woff'), url('opensans/opensans-italic-webfont.ttf') format('truetype'), url('opensans/opensans-italic-webfont.svg#open_sansitalic') format('svg');
+	font-weight: normal;
+	font-style: italic;
+}
+/* SemiBold */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-semibold-webfont.eot');
+	src: url('opensans/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-semibold-webfont.woff2') format('woff2'), url('opensans/opensans-semibold-webfont.woff') format('woff'), url('opensans/opensans-semibold-webfont.ttf') format('truetype'), url('opensans/opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
+	font-weight: 600;
+	font-style: normal;
+}
+/* SemiBold + Italic */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-semibolditalic-webfont.eot');
+	src: url('opensans/opensans-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-semibolditalic-webfont.woff2') format('woff2'), url('opensans/opensans-semibolditalic-webfont.woff') format('woff'), url('opensans/opensans-semibolditalic-webfont.ttf') format('truetype'), url('opensans/opensans-semibolditalic-webfont.svg#open_sanssemibold_italic') format('svg');
+	font-weight: 600;
+	font-style: italic;
+}
+/* Bold */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-bold-webfont.eot');
+	src: url('opensans/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-bold-webfont.woff2') format('woff2'), url('opensans/opensans-bold-webfont.woff') format('woff'), url('opensans/opensans-bold-webfont.ttf') format('truetype'), url('opensans/opensans-bold-webfont.svg#open_sansbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+/* Bold + Italic */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-bolditalic-webfont.eot');
+	src: url('opensans/opensans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-bolditalic-webfont.woff2') format('woff2'), url('opensans/opensans-bolditalic-webfont.woff') format('woff'), url('opensans/opensans-bolditalic-webfont.ttf') format('truetype'), url('opensans/opensans-bolditalic-webfont.svg#open_sansbold_italic') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}
+/* ExtraBold */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-extrabold-webfont.eot');
+	src: url('opensans/opensans-extrabold-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-extrabold-webfont.woff2') format('woff2'), url('opensans/opensans-extrabold-webfont.woff') format('woff'), url('opensans/opensans-extrabold-webfont.ttf') format('truetype'), url('opensans/opensans-extrabold-webfont.svg#open_sansextrabold') format('svg');
+	font-weight: 800;
+	font-style: normal;
+}
+/* ExtraBold + Italic */
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('opensans/opensans-extrabolditalic-webfont.eot');
+	src: url('opensans/opensans-extrabolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('opensans/opensans-extrabolditalic-webfont.woff2') format('woff2'), url('opensans/opensans-extrabolditalic-webfont.woff') format('woff'), url('opensans/opensans-extrabolditalic-webfont.ttf') format('truetype'), url('opensans/opensans-extrabolditalic-webfont.svg#open_sansextrabold_italic') format('svg');
+	font-weight: 800;
+	font-style: italic;
+}
+
+/* ************************************************************************
+ * AUVERCLOUD RUNTIME CONTENT (.arc)
+ * ************************************************************************/
+.arc {
+	/* Generic class for any AuverCloud content */
+}
+/* ************************************************************************
+ * CONTENT: TEXT
+ * ************************************************************************/
+/* This class is inserted in content to display the 'title' property in text and iframe content. To customize globally or for each content */
+.arc-title {
+}
+/* Default paragraphe style used by text box editor */
+.arc-style-normal, .arc-style-h1, .arc-style-h2, .arc-style-h3, .arc-style-h4, .arc-style-title, .arc-style-subtitle {
+	color: #000;
+	text-align: left;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	font-family: Arial;
+}
+.arc-style-normal {
+	font-weight: normal;
+}
+.arc-style-title {
+	font-size: 32px;
+}
+.arc-style-subtitle {
+	font-size: 20px;
+	color: #888;
+	font-style: italic;
+}
+.arc-style-normal h1, .arc-style-h1 {
+	font-size: 28px;
+}
+.arc-style-normal h2, .arc-style-h2 {
+	font-size: 24px;
+}
+.arc-style-normal h3, .arc-style-h3 {
+	font-size: 20px;
+}
+.arc-style-normal h4, .arc-style-h4 {
+	font-size: 16px;
+}
+/* Margin around any inserted pic */
+.arc-pic {
+	margin: 10px;
+}
+/* ************************************************************************
+ * CONTENT: PICTURE/SLIDESHOW
+ * ************************************************************************/
+.arc-sc {
+	position: relative;
+	height: 100%;
+	min-height: 200px;
+}
+/* Picture list */
+.arc-sc-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+/* Picture */
+.arc-sc-list > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	display: none;
+}
+.arc-sc-list > div:first-child {
+	display: block;
+}
+/* Progress bullet area located at the container bottom */
+.arc-sc-bullet {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	text-align: center;
+}
+/* Centered bullet list */
+.arc-sc-bullet > div {
+	display: inline-block;
+	height: 20px;
+}
+/* Bullet */
+.arc-sc-bullet > div > div {
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	margin: 5px;
+	border-radius: 5px;
+}
+.arc-sc-bullet-idle {
+	background-color: #ccc;
+}
+.arc-sc-bullet-active {
+	background-color: #888;
+}
+/* Handler area */
+.arc-sc-handler {
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.arc-sc-handler > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+/* Handlers */
+.arc-sc-handler > div > div {
+	margin: 10px;
+	width: 40px;
+	height: 40px;
+	border: none;
+	box-shadow: 0px 0px 1px #fff;
+	line-height: 40px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 12px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	background: rgba(0,0,0,0.3);
+	border-radius: 30px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+.arc-sc-handler > div > div:hover {
+	background: rgba(0,0,0,0.5);
+}
+.arc-sc-handler > div > div:first-child {
+	float: left;
+}
+.arc-sc-handler > div > div:first-child::before {
+	content: "<";
+}
+.arc-sc-handler > div > div:last-child {
+	float: right;
+}
+.arc-sc-handler > div > div:last-child::before {
+	content: ">";
+}
+/* Title area */
+.arc-sc-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 125%;
+	font-family: Arial, Helvetica, sans-serif;
+	background: rgba(255,255,255,0.7);
+}
+/* ************************************************************************
+ * CONTENT: MENU => Color schema
+ * ************************************************************************/
+/* BACKGROUND */
+.arc.menu {
+	background: #666; /* Dark bg for top level menu */
+}
+.arc.menu > li > ul {
+	background: #666; /* Dark bg for submenu */
+}
+.arc.menu a:hover {
+	background: rgba(0,0,0,0.5); /* Dark transparent shadow for hovered link and submenu */
+}
+/* FOREGROUND */
+.arc.menu a:link, .arc.menu .submenu > span {
+	color: #fff; /* White default link and submenu title */
+}
+.arc.menu a:visited {
+	color: #eee; /* Lite grey visited link */
+}
+.arc.menu a:hover, .arc.menu .submenu:hover > span {
+	color: #FFCC00; /* Lite yellow hovered link */
+}
+.arc.menu a:active {
+	color: #EBBD02; /* Dark yellow pressed link */
+}
+/* BORDER */
+.arc.menu > li > a:hover {
+	border-bottom-color: #FFCC00;
+}
+.arc.menu .submenu:hover > ul {
+	border-top-color: #FFCC00;
+}
+/* ************************************************************************
+ * CONTENT: MENU => Horizontal structure
+ * ************************************************************************/
+.arc.menu {
+	height: 50px;
+}
+.arc.menu {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style-type: none;
+	cursor: pointer;
+}
+.arc.menu > li {
+	float: left;
+	display: block;
+	height: 100%;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	overflow: visible;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 40px;
+}
+.arc.menu a {
+	display: block;
+	padding: 0 10px;
+	text-decoration: none;
+	line-height: 46px;
+	height: 46px;
+}
+.arc.menu > li > a {
+	border-bottom: 4px solid transparent;
+}
+.arc.menu .submenu > ul {
+	border-top: 4px solid transparent;
+	position: absolute;
+	z-index: 1000; /* !!! To customize according to the page !!! */
+}
+.arc.menu .submenu > span {
+	display: block;
+	padding: 0 10px;
+	line-height: 46px;
+	height: 46px;
+}
+.arc.menu > li > ul {
+	z-index: 100;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: none;
+	border-radius: 0 0 10px 10px;
+}
+.arc.menu ul li:last-child a {
+	border-radius: 0 0 10px 10px;
+}
+/* THIS DOES WORK WITH iOS! It requires also <body ontouchstart="" onmouseover="" > added by arc.js */
+.arc.menu .submenu:hover ul {
+	display: block;
+}
+/* ************************************************************************
+ * CONTENT: TEXT LOG
+ * ************************************************************************/
+/* Link to current version of text in log */
+.arc-log-latest {
+	padding: 5px;
+}
+/* Month list in log */
+.arc-log {
+	margin: 0;
+	padding: 0;
+}
+/* Month title togglable */
+.arc-log > div {
+	height: 24px;
+	line-height: 24px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+/* Signs + and - */
+.arc-log > div > span {
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+	width: 20px;
+	cursor: pointer;
+}
+/* List item */
+.arc-log li {
+	margin-left: 40px;
+}
+/* ************************************************************************
+ * EOF
+ * ************************************************************************/
