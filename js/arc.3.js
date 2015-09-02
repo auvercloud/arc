@@ -78,7 +78,7 @@ var arc = {
 	APP_NAME : "",
 
 	// API SERVER URL: SHOULD NOT BE MODIFIED
-	API_URL : "https://api.auvercloud.com/sancy.php",
+	API_URL : "https://api.auvercloud.com/",
 
 	// DOM attribute content prefix e.g. prefix-text, prefix-log...
 	DOM_PREFIX : "arc",

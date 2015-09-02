@@ -44,7 +44,7 @@
 class AuverCloud {
 
 	// API server address
-	const API_SERVER = "https://dev.auvercloud.com/";
+	const API_SERVER = "https://api.auvercloud.com/";
 
 	/* Function: __construct
 	 * Purpose: Construct new instance
