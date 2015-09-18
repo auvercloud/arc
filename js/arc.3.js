@@ -9,7 +9,7 @@
  * =============================================================================================
  * CSS DEPENDENCE
  * https://www.auvercloud.com/run/css/arc.css is required when
- * AuverCloud runtime client is used for AuverCloud cross-domain API client and content publishing 
+ * AuverCloud runtime client is used for AuverCloud cross-domain API client and content publishing
  * =============================================================================================
  * BROWSER SUPPORT
  * 		- IE >= 9
@@ -546,11 +546,6 @@ var arc = {
 			if (settings.slideshow)
 				$(".arc-sc").slideshow();
 
-			if (settings.track)
-				arc.api({
-					api : "page_track"
-				});
-
 			if ( typeof settings.callback == "function")
 				settings.callback();
 		};
@@ -686,8 +681,7 @@ var arc = {
 			console.log("- arc:", num.log, "log(s)");
 		}
 	}
-};
-( function() {
+}; ( function() {
 
 		/* =============================================================================================
 		 * JQUERY EXTENSION: slideshow
