@@ -371,7 +371,7 @@ var arc = {
 
 			// Default error callback: Alert
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("Network error. Please retry later:", textStatus, errorThrown);
+				console.log("Network error. Please retry later:", textStatus, errorThrown);
 			},
 
 			// Default upload progress (between 0.0 and 1.0) callback: Message in console
